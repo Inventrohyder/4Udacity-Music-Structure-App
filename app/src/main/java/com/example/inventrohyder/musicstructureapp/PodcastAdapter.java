@@ -1,7 +1,6 @@
 package com.example.inventrohyder.musicstructureapp;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
