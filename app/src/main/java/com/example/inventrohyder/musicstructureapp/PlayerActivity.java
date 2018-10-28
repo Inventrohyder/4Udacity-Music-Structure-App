@@ -20,7 +20,7 @@ public class PlayerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_player);
 
         /*
-         * Get the chosen {@Podcast}
+         * Get the chosen {@link Podcast}
          * Get the Title, Author, Image
          * From an explicit intent
          */
