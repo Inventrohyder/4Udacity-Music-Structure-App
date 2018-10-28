@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class PodcastAdapter extends ArrayAdapter<Podcast> {
 
-    // Get the context of the app to use when applying custom fonts
+    // Get the {@link Context} of the app to use when applying custom fonts
     private Context mContext;
 
     PodcastAdapter(Context context, ArrayList<Podcast> podcastArrayList) {
@@ -50,7 +50,7 @@ public class PodcastAdapter extends ArrayAdapter<Podcast> {
 
         Typeface typeface = ResourcesCompat.getFont(mContext, R.font.audiowide);
 
-        // Ensure that current podcast is not null so that the image and title can be set
+        // Ensure that current {@link Podcast} is not null so that the image and title can be set
         assert currentPodcast != null;
         holder.pod_image.setImageResource(currentPodcast.getImageResourceId());
         holder.pod_title.setText(currentPodcast.getTitle());
@@ -62,6 +62,7 @@ public class PodcastAdapter extends ArrayAdapter<Podcast> {
         return convertView;
     }
 
+    // Inner class to implement the {@link ViewHolder} pattern to improve load times
     public static class ViewHolder {
         ImageView pod_image;
         TextView pod_title;

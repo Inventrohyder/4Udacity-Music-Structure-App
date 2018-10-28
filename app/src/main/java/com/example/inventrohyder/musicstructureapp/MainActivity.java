@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    // {@final} and {@static} {@String} names to pass in explicit intents and access them from
-    // other activities
+    // {@link final} and {@link static} {@link String} names to pass in explicit intents and access
+    // them from other activities
     public static final String PODCAST_TITLE = "PODCAST_TITLE";
     public static final String PODCAST_AUTHOR = "PODCAST_AUTHOR";
     public static final String PODCAST_ART = "PODCAST_ART";
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.podcast_list);
 
-        // Arraylist containing podcast objects
+        // {@link ArrayList} containing {@link Podcast} objects
         final ArrayList<Podcast> podcasts = new ArrayList<>();
         podcasts.add(new Podcast(getString(R.string.the_angel), getString(R.string.the_angel_author), R.drawable.the_angel));
         podcasts.add(new Podcast(getString(R.string.the_heat), getString(R.string.the_heat_author)));
@@ -37,15 +37,15 @@ public class MainActivity extends AppCompatActivity {
         podcasts.add(new Podcast(getString(R.string.the_stone), getString(R.string.the_stone_author), R.drawable.the_stone));
         podcasts.add(new Podcast(getString(R.string.the_hit), getString(R.string.the_hit_author)));
 
-        // Custom {@ArrayAdapter} to handle the different views required for the podcast objects
+        // Custom {@link ArrayAdapter} to handle the different views required for the {@link Podcast} objects
         PodcastAdapter podcastAdapter = new PodcastAdapter(getApplicationContext(), podcasts);
 
-        // The {@ListView} that will have our custom adapter
+        // The {@link ListView} that will have our custom adapter
         ListView listView = findViewById(R.id.list);
         listView.setAdapter(podcastAdapter);
 
 
-        // {@OnItemClickListener} to handle events when each specific list item is clicked
+        // {@link OnItemClickListener} to handle events when each specific list item is clicked
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
