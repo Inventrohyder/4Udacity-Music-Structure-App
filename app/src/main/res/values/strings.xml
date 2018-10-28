@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Music Structure App</string>
+    <string name="pause_play_button_description">Pause play button</string>
+    <string name="podcast_image_description">Image affiliated with this podcast</string>
+    <string name="ic_pocast_description">Image icon for the podcast</string>
+    <string name="forward_button_description">Skip ahead</string>
+    <string name="replay_button_description">Replay back</string>
+    <string name="label_mainActivity">Podcasts</string>
+    <string name="label_playerActivity">Player</string>
+    <string name="the_angel">The Angel</string>
+    <string name="the_angel_author">Geertz</string>
+    <string name="the_heat">The Heat</string>
+    <string name="the_heat_author">Maeneo</string>
+    <string name="the_house">The House</string>
+    <string name="the_house_author">John</string>
+    <string name="the_extra">The Extra</string>
+    <string name="the_extra_author">Natalia</string>
+    <string name="the_rocker">The Rocker</string>
+    <string name="the_rocker_author">Budalangi</string>
+    <string name="the_egyptian">The Egyptian</string>
+    <string name="the_egyptian_author">Hatem</string>
+    <string name="the_waffles">The waffles</string>
+    <string name="the_waffles_author">Keshav</string>
+    <string name="the_beat">The Beat</string>
+    <string name="the_beat_author">House</string>
+    <string name="the_king">The King</string>
+    <string name="the_king_author">Goev</string>
+    <string name="the_jupyter_notebook">The Jupyter notebook</string>
+    <string name="the_jupyter_notebook_author">Kamande</string>
+    <string name="the_stone">The Stone</string>
+    <string name="the_stone_author">Bidhaa</string>
+    <string name="the_hit">The Hit</string>
+    <string name="the_hit_author">Yolo</string>
+    <string name="play_img_description">Play icon. This item is playable</string>
+</resources>
