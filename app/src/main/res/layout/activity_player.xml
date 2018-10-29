@@ -14,7 +14,7 @@
         android:scaleType="centerCrop"
         android:layout_centerInParent="true"
         android:contentDescription="@string/podcast_image_description"
-        tools:src="@drawable/ic_launcher" />
+        tools:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/player_title"

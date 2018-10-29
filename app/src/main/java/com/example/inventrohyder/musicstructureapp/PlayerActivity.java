@@ -28,7 +28,7 @@ public class PlayerActivity extends AppCompatActivity {
         String title = intent.getStringExtra(MainActivity.PODCAST_TITLE);
         String author = intent.getStringExtra(MainActivity.PODCAST_AUTHOR);
         // The default int value for the image is the idea of the application icon
-        int imageResourceId = intent.getIntExtra(MainActivity.PODCAST_ART, R.drawable.ic_launcher);
+        int imageResourceId = intent.getIntExtra(MainActivity.PODCAST_ART, R.drawable.ic_play_circle_outline_white_120dp);
 
         /*
          * Placing the correct Image, Title, Author and Audio for the specific podcast into the

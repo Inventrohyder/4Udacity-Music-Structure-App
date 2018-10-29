@@ -28,7 +28,7 @@ class Podcast {
      * @param Author is the name of the author of the {@link Podcast}
      */
     Podcast(String Title, String Author) {
-        this(Title, Author, R.drawable.ic_launcher);
+        this(Title, Author, R.drawable.ic_play_circle_outline_white_120dp);
     }
 
     /**
