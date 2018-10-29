@@ -21,7 +21,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" android:label="@string/label_mainActivity"/>
-        <activity android:name=".PlayerActivity" android:label="@string/label_playerActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".PlayerActivity"
+            android:label="@string/label_playerActivity"
+            android:parentActivityName="com.example.inventrohyder.musicstructureapp.MainActivity"
+            tools:targetApi="jelly_bean">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.inventrohyder.musicstructureapp.MainActivity" />
+        </activity>
 
     </application>
 
