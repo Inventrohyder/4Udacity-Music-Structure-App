@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String PODCAST_TITLE = "PODCAST_TITLE";
     public static final String PODCAST_AUTHOR = "PODCAST_AUTHOR";
     public static final String PODCAST_ART = "PODCAST_ART";
+    public static final String PODCAST_AUDIO = "PODCAST_AUDIO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +25,32 @@ public class MainActivity extends AppCompatActivity {
 
         // {@link ArrayList} containing {@link Podcast} objects
         final ArrayList<Podcast> podcasts = new ArrayList<>();
-        podcasts.add(new Podcast(getString(R.string.the_angel), getString(R.string.the_angel_author), R.drawable.the_angel));
-        podcasts.add(new Podcast(getString(R.string.the_heat), getString(R.string.the_heat_author)));
-        podcasts.add(new Podcast(getString(R.string.the_house), getString(R.string.the_house_author), R.drawable.the_house));
-        podcasts.add(new Podcast(getString(R.string.the_extra), getString(R.string.the_extra_author), R.drawable.the_extra));
-        podcasts.add(new Podcast(getString(R.string.the_rocker), getString(R.string.the_rocker_author)));
-        podcasts.add(new Podcast(getString(R.string.the_egyptian), getString(R.string.the_egyptian_author), R.drawable.the_egyptian));
-        podcasts.add(new Podcast(getString(R.string.the_waffles), getString(R.string.the_waffles_author), R.drawable.the_waffles));
-        podcasts.add(new Podcast(getString(R.string.the_beat), getString(R.string.the_beat_author)));
-        podcasts.add(new Podcast(getString(R.string.the_king), getString(R.string.the_king_author), R.drawable.the_king));
-        podcasts.add(new Podcast(getString(R.string.the_jupyter_notebook), getString(R.string.the_jupyter_notebook_author), R.drawable.the_jupyter_notebook));
-        podcasts.add(new Podcast(getString(R.string.the_stone), getString(R.string.the_stone_author), R.drawable.the_stone));
-        podcasts.add(new Podcast(getString(R.string.the_hit), getString(R.string.the_hit_author)));
+        podcasts.add(new Podcast(getString(R.string.the_angel), getString(R.string.the_angel_author),
+                R.drawable.the_angel, R.raw.the_angel));
+        podcasts.add(new Podcast(getString(R.string.the_heat),
+                getString(R.string.the_heat_author), R.raw.the_heat));
+        podcasts.add(new Podcast(getString(R.string.the_house),
+                getString(R.string.the_house_author), R.drawable.the_house, R.raw.the_house));
+        podcasts.add(new Podcast(getString(R.string.the_extra),
+                getString(R.string.the_extra_author), R.drawable.the_extra, R.raw.the_extra));
+        podcasts.add(new Podcast(getString(R.string.the_rocker),
+                getString(R.string.the_rocker_author), R.raw.the_rocker));
+        podcasts.add(new Podcast(getString(R.string.the_egyptian),
+                getString(R.string.the_egyptian_author),
+                R.drawable.the_egyptian, R.raw.the_egyptian));
+        podcasts.add(new Podcast(getString(R.string.the_waffles),
+                getString(R.string.the_waffles_author), R.drawable.the_waffles, R.raw. the_waffles));
+        podcasts.add(new Podcast(getString(R.string.the_beat),
+                getString(R.string.the_beat_author), R.raw.the_beat));
+        podcasts.add(new Podcast(getString(R.string.the_king),
+                getString(R.string.the_king_author), R.drawable.the_king, R.raw.the_king));
+        podcasts.add(new Podcast(getString(R.string.the_jupyter_notebook),
+                getString(R.string.the_jupyter_notebook_author),
+                R.drawable.the_jupyter_notebook, R.raw.the_jupyter_notebook));
+        podcasts.add(new Podcast(getString(R.string.the_stone),
+                getString(R.string.the_stone_author), R.drawable.the_stone, R.raw.the_stone));
+        podcasts.add(new Podcast(getString(R.string.the_hit),
+                getString(R.string.the_hit_author), R.raw.the_hit));
 
         // Custom {@link ArrayAdapter} to handle the different views required for the {@link Podcast} objects
         PodcastAdapter podcastAdapter = new PodcastAdapter(getApplicationContext(), podcasts);
@@ -56,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(PODCAST_TITLE, podcast.getTitle());
                 intent.putExtra(PODCAST_AUTHOR, podcast.getAuthor());
                 intent.putExtra(PODCAST_ART, podcast.getImageResourceId());
+                intent.putExtra(PODCAST_AUDIO, podcast.getAudioResourceId());
                 startActivity(intent);
             }
         });

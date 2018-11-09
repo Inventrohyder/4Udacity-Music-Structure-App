@@ -22,13 +22,19 @@ class Podcast {
     private int mImageResourceId;
 
     /**
+     * The audio of the {@link Podcast}
+     **/
+    private int mAudioResourceId;
+
+    /**
      * Creates a new {@link Podcast} object with a default image which is the application icon.
      *
      * @param Title  is the title of the {@link Podcast}
      * @param Author is the name of the author of the {@link Podcast}
+     * @param audioResourceId is the resource ID of the audio file for the {@link Podcast}
      */
-    Podcast(String Title, String Author) {
-        this(Title, Author, R.drawable.ic_play_circle_outline_white_120dp);
+    Podcast(String Title, String Author, int audioResourceId) {
+        this(Title, Author, R.drawable.ic_play_circle_outline_white_120dp, audioResourceId);
     }
 
     /**
@@ -36,12 +42,14 @@ class Podcast {
      *
      * @param Title           is the title of the {@link Podcast}
      * @param Author          is the name of the author of the {@link Podcast}
-     * @param imageResourceId is the resource ID of the audio file for the {@link Podcast}
+     * @param imageResourceId is the resource ID of the art file for the {@link Podcast}
+     * @param audioResourceId is the resource ID of the audio file for the {@link Podcast}
      */
-    Podcast(String Title, String Author, int imageResourceId) {
+    Podcast(String Title, String Author, int imageResourceId, int audioResourceId) {
         mTitle = Title;
         mAuthor = Author;
         mImageResourceId = imageResourceId;
+        mAudioResourceId = audioResourceId;
     }
 
     /**
@@ -63,5 +71,12 @@ class Podcast {
      */
     int getImageResourceId() {
         return mImageResourceId;
+    }
+
+    /**
+     * Get the Audio resource id of the {@link Podcast}
+     */
+    int getAudioResourceId() {
+        return mAudioResourceId;
     }
 }

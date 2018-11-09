@@ -1,6 +1,7 @@
 package com.example.inventrohyder.musicstructureapp;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,8 +28,10 @@ public class PlayerActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String title = intent.getStringExtra(MainActivity.PODCAST_TITLE);
         String author = intent.getStringExtra(MainActivity.PODCAST_AUTHOR);
-        // The default int value for the image is the idea of the application icon
+        // The default int value for the image is the id of the application icon
         int imageResourceId = intent.getIntExtra(MainActivity.PODCAST_ART, R.drawable.ic_play_circle_outline_white_120dp);
+        // The default int value for the audio is just 0
+        int audioResourceId = intent.getIntExtra(MainActivity.PODCAST_AUDIO, 0);
 
         /*
          * Placing the correct Image, Title, Author and Audio for the specific podcast into the
@@ -46,14 +49,21 @@ public class PlayerActivity extends AppCompatActivity {
         final int playImageID = R.drawable.ic_play_arrow_white_48dp;
         final int pauseImageID = R.drawable.ic_pause_white_48dp;
 
+        // Create the MediaPlayer object to play the audio
+        final MediaPlayer mediaPlayer =  MediaPlayer.create(getApplicationContext(),audioResourceId);
+
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Switching between play and pause buttons when clicked
                 if (play) {
+                    // Set the button image to pause and start playing the audio
                     imageButton.setImageResource(pauseImageID);
+                    mediaPlayer.start();
                 } else {
+                    // Set the button image to play and stop playing the audio
                     imageButton.setImageResource(playImageID);
+                    mediaPlayer.stop();
                 }
                 play = !play;
             }
