@@ -1,6 +1,8 @@
 package com.example.inventrohyder.musicstructureapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,11 @@ public class PlayerActivity extends AppCompatActivity {
      * Handles playback of all the sound files
      */
     MediaPlayer mMediaPlayer;
+
+    /**
+     * Handles Audio management and controls the audio playback dependant on Audio Focus.
+     */
+    AudioManager mAudioManager;
 
     /**
      * The listener gets triggered when the {@link MediaPlayer} has completed
@@ -65,10 +72,6 @@ public class PlayerActivity extends AppCompatActivity {
         final int playImageID = R.drawable.ic_play_arrow_white_48dp;
         final int pauseImageID = R.drawable.ic_pause_white_48dp;
 
-        // Release the media player if it currently exists because we are about to
-        // play a different sound file.
-        releaseMediaPlayer();
-
         // Create the MediaPlayer object to play the audio resource associated
         // with the current podcast
         mMediaPlayer = MediaPlayer.create(getApplicationContext(), audioResourceId);
@@ -76,6 +79,51 @@ public class PlayerActivity extends AppCompatActivity {
         // Setup a listener on the media player, so that we can stop and release the
         // media player once the sounds has finished playing.
         mMediaPlayer.setOnCompletionListener(mOnCompletionListener);
+
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
+        mAudioManager.requestAudioFocus(new AudioManager.OnAudioFocusChangeListener() {
+            @Override
+            public void onAudioFocusChange(int focusChange) {
+                synchronized (this) {
+                    switch (focusChange) {
+                        case AudioManager.AUDIOFOCUS_GAIN:
+                            // Implementing ducking which reduces the volume, we have to regaining
+                            // the volume
+                            mMediaPlayer.setVolume(50, 50);
+
+                            // When play is false perform a button click which sets the right
+                            // ImageButton and pause the audio
+                            if (!play) {
+                                imageButton.performClick();
+                            }
+                        case AudioManager.AUDIOFOCUS_LOSS:
+                            // When the audio focus is lost for an unknown period of time
+                            // release the media player to release the memory.
+                            releaseMediaPlayer();
+
+                            // Set the button image to play and stop playing the audio
+                            imageButton.performClick();
+
+                            // Set play back to true so that the next thing that would run is play
+                            // when the button is clicked
+                            play = true;
+
+                        case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
+                            // When the audio focus is lost for a short amount of time
+                            // check if play is false
+                            // Perform a click of the pause_play button
+                            if (!play) {
+                                imageButton.performClick();
+                            }
+                        case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
+                            // When the audio focus is lost for a short time and it allows ducking
+                            // lower the volume
+                            mMediaPlayer.setVolume(10, 10);
+                    }
+                }
+            }
+        }, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
